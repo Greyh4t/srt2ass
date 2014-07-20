@@ -10,7 +10,7 @@ It's a tool that can Convert  Subtitle formats from .srt to .ass
 
 ## How to use ##
 
-```python srt2ass.py file```<br />
+```python srt2ass.py "file"```<br />
 
 ## Sample ##
 
