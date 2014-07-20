@@ -14,4 +14,4 @@ It's a tool that can Convert  Subtitle formats from .srt to .ass
 
 ## Sample ##
 
-```python srt2ass.py "Transcendence.2014.BluRay.720p.DTS.x264-CHD.简体&英文.srt"```<br />
+```python srt2ass.py "D:\Transcendence.2014.BluRay.720p.DTS.x264-CHD.简体&英文.srt"```<br />
