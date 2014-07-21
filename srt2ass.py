@@ -14,11 +14,11 @@ def fileopen(input_file):
         coding = chardet.detect(file_str)['encoding']
         # print coding
         if ('UTF-16' in coding):
-            tmp = file_str.decode('utf-16').encode('utf-8')
-        elif ('GB2312' in coding):
-            tmp = file_str.decode('gbk').encode('utf-8')
+            tmp = file_str.decode('utf-16', 'ignore').encode('utf-8')
+        elif ('GB2312' in coding or 'GBK' in coding):
+            tmp = file_str.decode('gbk', 'ignore').encode('utf-8')
         elif ('Big5' in coding):
-            tmp = file_str.decode('big5').encode('utf-8')
+            tmp = file_str.decode('big5', 'ignore').encode('utf-8')
         else:
             tmp = file_str.decode('utf-8', 'ignore').encode('utf-8')
     return tmp
@@ -47,7 +47,7 @@ Script Updated By: 衣柜
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Titles,Microsoft YaHei,20,&H00C2E0EC,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1,1,2,10,10,10,1
-Style: Subtitle,Microsoft YaHei,26,&H00C2E0EC,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1,1,2,10,10,10,1
+Style: Subtitle,Microsoft YaHei,26,&H00C2E0EC,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1,1,2,10,10,4,1
 Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
 
 [Events]
@@ -55,6 +55,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text'
     
     tmp = fileopen(input_file)
 
+    tmp = tmp + '\r\n\r\n'
     tmp = tmp.replace('{', '')
     tmp = tmp.replace('}', '')
     pattern = re.compile(r'(\d{1,2}:\d{1,2}:\d{1,2}),(\d{1,3})')
