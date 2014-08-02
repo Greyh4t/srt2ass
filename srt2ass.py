@@ -60,6 +60,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text'
     tmp = tmp.replace('}', '')
     pattern = re.compile(r'(\d{1,2}:\d{1,2}:\d{1,2}),(\d{1,3})')
     tmp = pattern.sub(r'\1.\2', tmp)
+    pattern = re.compile(r'(\d{1,2}:\d{1,2}:\d{1,2}\.\d{1,3} ?--> ?\d{1,2}:\d{1,2}:\d{1,2}\.\d{1,3})\r\n\r\n')
+    tmp = pattern.sub(r'\1\r\n', tmp)
     pattern = re.compile(r'\d{1,4}\r\n(\d{1,2}:\d{1,2}:\d{1,2}\.\d{1,3}) ?--> ?(\d{1,2}:\d{1,2}:\d{1,2}\.\d{1,3})\r\n(\\an\d\\pos\(.+\))')
     tmp = pattern.sub(r'Dialogue: 0,\1,\2,Titles,,0,0,0,,{\3\\fad(500,500)\\fs20}', tmp)
     pattern = re.compile(r'\d{1,4}\r\n(\d{1,2}:\d{1,2}:\d{1,2}\.\d{1,3}) ?--> ?(\d{1,2}:\d{1,2}:\d{1,2}\.\d{1,3})\r\n(\\pos\(.+\))')
